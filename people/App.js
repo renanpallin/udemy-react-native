@@ -26,20 +26,20 @@ export default class App extends React.Component {
 	}
 
 	renderList() {
-		// const textElements = names.map(name => {
-		// 	return <Text key={name}>{name}</Text>;
-		// });
+		// [pessoa1, pessoa2, blablabla]
+		const textElements = this.state.peoples.map(people => {
+			const { first } = people.name;
+			return <Text key={ first }>{ first }</Text>;
+		});
 
-		/* Promises */
-
-
-		// return textElements;
+		return textElements;
 	}
 
 	render() {
 		return (
 			<View>
 				<Header title="Pessoas!" />
+				{this.renderList()}
 			</View>
 		);
 	}

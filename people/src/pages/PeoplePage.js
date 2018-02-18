@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import Header from '../components/Header';
+// import Header from '../components/Header';
 import PeopleList from '../components/PeopleList';
 
 import axios from 'axios';
@@ -27,10 +27,15 @@ export default class PeoplePage extends React.Component {
 	}
 
 	render() {
+		// this.props.navition.navigate(/* Chave da página */, /* state */)
+		// this.props.navigation.navigate('PeopleDetail');
 		return (
 			<View>
-				<Header title="Pessoas!" />
-				<PeopleList peoples={this.state.peoples} />
+				<PeopleList
+					peoples={this.state.peoples}
+					onPressItem={pageParams => {
+						this.props.navigation.navigate('PeopleDetail', pageParams);
+					}} />
 			</View>
 		);
 	}

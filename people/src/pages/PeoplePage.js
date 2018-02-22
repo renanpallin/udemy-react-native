@@ -18,7 +18,7 @@ export default class PeoplePage extends React.Component {
 		this.setState({ loading: true });
 		setTimeout(() => {
 			axios
-				.get('https://randomuser.me/api/?nat=br&results=15')
+				.get('https://randomuserERRO_POR_FAVOR.me/api/?nat=br&results=15')
 				.then(response => {
 					const { results } = response.data;
 					this.setState({
@@ -26,7 +26,7 @@ export default class PeoplePage extends React.Component {
 						loading: false,
 					});
 				})
-		}, 1500)
+		}, 3500)
 	}
 
 	// renderLoading() {
@@ -37,19 +37,25 @@ export default class PeoplePage extends React.Component {
 
 	render() {
 		return (
-			<View>
+			<View style={styles.container}>
 				{/* this.renderLoading() */}
 				{
 					this.state.loading
 						? <ActivityIndicator size="large" color="#6ca2f7" />
-						: null
+						: <PeopleList
+							peoples={this.state.peoples}
+							onPressItem={pageParams => {
+								this.props.navigation.navigate('PeopleDetail', pageParams);
+							}} />
 				}
-				<PeopleList
-					peoples={this.state.peoples}
-					onPressItem={pageParams => {
-						this.props.navigation.navigate('PeopleDetail', pageParams);
-					}} />
 			</View>
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		justifyContent: 'center',
+	}
+});

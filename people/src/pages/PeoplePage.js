@@ -1,10 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
-// import Header from '../components/Header';
-import PeopleList from '../components/PeopleList';
-
 import axios from 'axios';
+
+import PeopleList from '../components/PeopleList';
 
 export default class PeoplePage extends React.Component {
 	constructor(props) {
@@ -17,7 +15,7 @@ export default class PeoplePage extends React.Component {
 
 	componentDidMount() {
 		axios
-			.get('https://randomuser.me/api/?nat=br&results=150')
+			.get('https://randomuser.me/api/?nat=br&results=15')
 			.then(response => {
 				const { results } = response.data;
 				this.setState({
@@ -27,8 +25,6 @@ export default class PeoplePage extends React.Component {
 	}
 
 	render() {
-		// this.props.navition.navigate(/* Chave da página */, /* state */)
-		// this.props.navigation.navigate('PeopleDetail');
 		return (
 			<View>
 				<PeopleList

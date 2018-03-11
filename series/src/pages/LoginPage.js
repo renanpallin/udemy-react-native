@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, TextInput, StyleSheet, Button } from 'react-native';
+import firebase from 'firebase';
+
 
 import FormRow from '../components/FormRow';
 
@@ -11,6 +13,18 @@ export default class LoginPage extends React.Component {
 			mail: '',
 			password: '',
 		}
+	}
+
+	componentDidMount() {
+		  var config = {
+		    apiKey: "AIzaSyAlfu1ev1S38uEAWXeNGaoMgEdHpQ1jk2I",
+		    authDomain: "series-ac513.firebaseapp.com",
+		    databaseURL: "https://series-ac513.firebaseio.com",
+		    projectId: "series-ac513",
+		    storageBucket: "series-ac513.appspot.com",
+		    messagingSenderId: "720879270280"
+		  };
+		  firebase.initializeApp(config);
 	}
 
 	onChangeHandler(field, value) {

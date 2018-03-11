@@ -16,15 +16,25 @@ export default class LoginPage extends React.Component {
 	}
 
 	componentDidMount() {
-		  var config = {
-		    apiKey: "AIzaSyAlfu1ev1S38uEAWXeNGaoMgEdHpQ1jk2I",
-		    authDomain: "series-ac513.firebaseapp.com",
-		    databaseURL: "https://series-ac513.firebaseio.com",
-		    projectId: "series-ac513",
-		    storageBucket: "series-ac513.appspot.com",
-		    messagingSenderId: "720879270280"
-		  };
-		  firebase.initializeApp(config);
+		const config = {
+			apiKey: "AIzaSyAlfu1ev1S38uEAWXeNGaoMgEdHpQ1jk2I",
+			authDomain: "series-ac513.firebaseapp.com",
+			databaseURL: "https://series-ac513.firebaseio.com",
+			projectId: "series-ac513",
+			storageBucket: "series-ac513.appspot.com",
+			messagingSenderId: "720879270280"
+		};
+		firebase.initializeApp(config);
+
+		firebase
+			.auth()
+			.signInWithEmailAndPassword('teste@mail.com', '123123')
+			.then(user => {
+				console.log('Usuário autenticado!', user);
+			})
+			.catch(error => {
+				console.log('Usuário NÃO encontrado', error);
+			})
 	}
 
 	onChangeHandler(field, value) {

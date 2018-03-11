@@ -25,8 +25,8 @@ export default class LoginPage extends React.Component {
 
 	render() {
 		return (
-			<View>
-				<FormRow>
+			<View style={styles.container}>
+				<FormRow first>
 					<TextInput
 						style={styles.input}
 						placeholder="user@mail.com"
@@ -34,7 +34,7 @@ export default class LoginPage extends React.Component {
 						onChangeText={value => this.onChangeHandler('mail', value)}
 					 />
 				</FormRow>
-				<FormRow>
+				<FormRow last>
 					<TextInput
 						style={styles.input}
 						placeholder="******"
@@ -52,9 +52,13 @@ export default class LoginPage extends React.Component {
 }
 
 const styles = StyleSheet.create({
+	container: {
+		paddingLeft: 10,
+		paddingRight: 10,
+	},
 	input: {
 		paddingLeft: 5,
 		paddingRight: 5,
 		paddingBottom: 5,
-	}
+	},
 });

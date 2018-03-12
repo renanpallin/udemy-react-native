@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, TextInput, StyleSheet, Button } from 'react-native';
+import {
+	View,
+	TextInput,
+	StyleSheet,
+	Button,
+	ActivityIndicator
+} from 'react-native';
 import firebase from 'firebase';
 
 
@@ -12,6 +18,7 @@ export default class LoginPage extends React.Component {
 		this.state = {
 			mail: '',
 			password: '',
+			isLoading: false,
 		}
 	}
 
@@ -25,16 +32,6 @@ export default class LoginPage extends React.Component {
 			messagingSenderId: "720879270280"
 		};
 		firebase.initializeApp(config);
-
-		firebase
-			.auth()
-			.signInWithEmailAndPassword('teste@mail.com', '123123')
-			.then(user => {
-				console.log('Usuário autenticado!', user);
-			})
-			.catch(error => {
-				console.log('Usuário NÃO encontrado', error);
-			})
 	}
 
 	onChangeHandler(field, value) {
@@ -44,7 +41,29 @@ export default class LoginPage extends React.Component {
 	}
 
 	tryLogin() {
-		console.log(this.state);
+		this.setState({ isLoading: true });
+		const { mail, password } = this.state;
+
+		firebase
+			.auth()
+			.signInWithEmailAndPassword(mail, password)
+			.then(user => {
+				console.log('Usuário autenticado!', user);
+			})
+			.catch(error => {
+				console.log('Usuário NÃO encontrado', error);
+			})
+			.then(() => this.setState({ isLoading: false }));
+	}
+
+	renderButton() {
+		if (this.state.isLoading)
+			return <ActivityIndicator />;
+		return (
+			<Button
+				title="Entrar"
+				onPress={() => this.tryLogin()}/>
+		);
 	}
 
 	render() {
@@ -67,9 +86,8 @@ export default class LoginPage extends React.Component {
 						onChangeText={value => this.onChangeHandler('password', value)}
 					/>
 				</FormRow>
-				<Button
-					title="Entrar"
-					onPress={() => this.tryLogin()}/>
+
+				{ this.renderButton() }
 			</View>
 		)
 	}

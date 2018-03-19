@@ -49,6 +49,7 @@ export default class LoginPage extends React.Component {
 
 		const loginUserSuccess = user => {
 			this.setState({ message: "Sucesso!" });
+			this.props.navigation.navigate('Main');
 		}
 
 		const loginUserFailed = error => {

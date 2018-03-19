@@ -1,6 +1,7 @@
 import { StackNavigator } from 'react-navigation';
 
 import LoginPage from './src/pages/LoginPage';
+import SeriesPage from './src/pages/SeriesPage';
 
 export default StackNavigator({
     'Login': {
@@ -8,6 +9,9 @@ export default StackNavigator({
         navigationOptions: {
             title: 'Bem vindo!',
         }
+    },
+    'Main': {
+        screen: SeriesPage
     }
 }, {
     navigationOptions: {

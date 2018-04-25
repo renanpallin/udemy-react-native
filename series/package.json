@@ -23,6 +23,8 @@
     "firebase": "^4.11.0",
     "react": "16.2.0",
     "react-native": "0.52.0",
-    "react-navigation": "^1.5.1"
+    "react-navigation": "^1.5.1",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
   }
 }

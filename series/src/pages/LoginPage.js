@@ -9,11 +9,14 @@ import {
 	Alert
 } from 'react-native';
 import firebase from 'firebase';
+import { connect } from 'react-redux';
+
+import { tryLogin } from '../actions';
 
 
 import FormRow from '../components/FormRow';
 
-export default class LoginPage extends React.Component {
+class LoginPage extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -45,49 +48,13 @@ export default class LoginPage extends React.Component {
 
 	tryLogin() {
 		this.setState({ isLoading: true, message: '' });
-		const { mail, password } = this.state;
+		const { mail: email, password } = this.state;
 
-		const loginUserSuccess = user => {
-			this.setState({ message: "Sucesso!" });
-			this.props.navigation.navigate('Main');
-		}
-
-		const loginUserFailed = error => {
-			this.setState({
-				message: this.getMessageByErrorCode(error.code)
+		this.props.tryLogin({ email, password })
+			.then(() => {
+				this.setState({ message: "Sucesso!" });
+				this.props.navigation.replace('Main');
 			});
-		}
-
-		firebase
-			.auth()
-			.signInWithEmailAndPassword(mail, password)
-			.then(loginUserSuccess)
-			.catch(error => {
-				if (error.code === 'auth/user-not-found') {
-					Alert.alert(
-						'Usuário não encontrado',
-						'Deseja criar um cadastro com as informações inseridas?',
-						[{
-							text: 'Não',
-							onPress: () => console.log('Usuário não quer criar conta'),
-							style: 'cancel' // IOS
-						}, {
-							text: 'Sim',
-							onPress: () => {
-								firebase
-									.auth()
-									.createUserWithEmailAndPassword(mail, password)
-									.then(loginUserSuccess)
-									.catch(loginUserFailed)
-							}
-						}],
-						{ cancelable: false }
-					)
-					return;
-				}
-				loginUserFailed(error);
-			})
-			.then(() => this.setState({ isLoading: false }));
 	}
 
 	getMessageByErrorCode(errorCode) {
@@ -162,3 +129,6 @@ const styles = StyleSheet.create({
 		paddingBottom: 5,
 	},
 });
+
+
+export default connect(null, { tryLogin })(LoginPage)

@@ -35,14 +35,27 @@ const styles = StyleSheet.create({
 		borderWidth: 1
 	},
 	cardTitleWrapper: {
-		backgroundColor: 'pink',
+		backgroundColor: 'black',
 		height: 50,
 
 		position: 'absolute',
 		bottom: 0,
+		opacity: .8,
+
+		width: '100%',
+
+		paddingTop: 10,
+		paddingBottom: 10,
+
+		paddingLeft: 3,
+		paddingRight: 3,
+
+		alignItems: 'center'
 	},
 	cardTitle: {
-
+		color: 'white',
+		fontSize: 15,
+		fontWeight: 'bold'
 	}
 });
 

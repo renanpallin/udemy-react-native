@@ -1,5 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {
+	View,
+	Text,
+	StyleSheet,
+	Dimensions
+} from 'react-native';
 
 const SerieCard = ({ serie }) => (
 	<View style={styles.container}>
@@ -11,7 +16,9 @@ const SerieCard = ({ serie }) => (
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1
+		flex: 1,
+		padding: 10,
+		height: Dimensions.get('window').width / 2
 	},
 	card: {
 		flex: 1,

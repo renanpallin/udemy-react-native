@@ -17,7 +17,9 @@ const SerieCard = ({ serie }) => (
 				aspectRatio={1}
 				resizeMode="cover"
 			/>
-			<Text>{`${serie.id} - ${serie.title}`}</Text>
+			<View style={styles.cardTitleWrapper}>
+				<Text style={styles.cardTitle}>{serie.title}</Text>
+			</View>
 		</View>
 	</View>
 );
@@ -31,6 +33,16 @@ const styles = StyleSheet.create({
 	card: {
 		flex: 1,
 		borderWidth: 1
+	},
+	cardTitleWrapper: {
+		backgroundColor: 'pink',
+		height: 50,
+
+		position: 'absolute',
+		bottom: 0,
+	},
+	cardTitle: {
+
 	}
 });
 

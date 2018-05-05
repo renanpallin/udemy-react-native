@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
+import SerieCard from '../components/SerieCard';
+
 
 import series from '../../series.json';
 
@@ -8,11 +10,10 @@ const SeriesPage = props => (
 		<FlatList
 			data={series}
 			renderItem={({ item }) => (
-				<View>
-					<Text>{`${item.id} - ${item.title}`}</Text>
-				</View>
+				<SerieCard serie={item} />
 			)}
 			keyExtractor={item => item.id}
+			numColumns={2}
 		/>
 	</View>
 );

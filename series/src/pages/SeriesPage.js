@@ -1,9 +1,19 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, FlatList } from 'react-native';
 
-const SeriesPage = ({ series }) => (
+import series from '../../series.json';
+
+const SeriesPage = props => (
 	<View>
-		<Text>Esta é a SeriesPage</Text>
+		<FlatList
+			data={series}
+			renderItem={({ item }) => (
+				<View>
+					<Text>{`${item.id} - ${item.title}`}</Text>
+				</View>
+			)}
+			keyExtractor={item => item.id}
+		/>
 	</View>
 );
 

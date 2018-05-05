@@ -1,0 +1,92 @@
+[
+	{
+		"id": 1,
+		"title": "Black Mirror",
+		"gender": "Ficção Científica",
+		"rate": 100,
+		"img":
+			"https://images-na.ssl-images-amazon.com/images/M/MV5BNTEwYzNiMGUtNzRlYS00MTMzLTliNzgtOGUxZGZiNThlNWYwXkEyXkFqcGdeQXVyMjYwNDA2MDE@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
+		"description":
+			"Black Mirror é uma série de televisão britânica antológica de ficção científica criada por Charlie Brooker e centrada em temas obscuros e satíricos que examinam a sociedade moderna, particularmente a respeito das consequências imprevistas das novas tecnologias. Os episódios são trabalhos autônomos, que geralmente se passam em um presente alternativo ou em um futuro próximo."
+	},
+	{
+		"id": 2,
+		"title": "Friends",
+		"gender": "Comédia",
+		"rate": 95,
+		"img":
+			"https://upload.wikimedia.org/wikipedia/pt/6/6d/Friends-logo.jpg",
+		"description":
+			"Friends é uma premiada sitcom americana criada por David Crane e Marta Kauffman e apresentada pela rede de televisão NBC entre 22 de setembro de 1994 e 6 de maio de 2004, com um total de 236 episódios."
+	},
+	{
+		"id": 3,
+		"title": "Todo mundo odeia o Chris",
+		"gender": "Comédia",
+		"rate": 100,
+		"img":
+			"https://images-na.ssl-images-amazon.com/images/M/MV5BMTU2NTg4MTc5OF5BMl5BanBnXkFtZTcwMzc2MzYzMQ@@._V1_.jpg",
+		"description":
+			"Everybody Hates Chris (Todo Mundo Odeia o Chris (título no Brasil) ou Todos Contra o Chris (título em Portugal)) é uma série de televisão estadunidense de comédia dramática inspirado nas experiências pessoais de Chris Rock no bairro de Bed-Stuy, em Nova Iorque, seguindo um estilo muito parecido com a série Anos Incríveis."
+	},
+	{
+		"id": 4,
+		"title": "Game of Thrones",
+		"gender": "Comédia",
+		"rate": 97,
+		"img":
+			"https://ia.media-imdb.com/images/M/MV5BMTkzNDA0MTg5Ml5BMl5BanBnXkFtZTgwNzM3NzMxODE@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+		"description":
+			"Game of Thrones é uma série de televisão norte-americana criada por David Benioff e D. B. Weiss, e baseada na série de livros A Song of Ice and Fire, de George R. R. Martin."
+	},
+	{
+		"id": 5,
+		"title": "The Simpsons",
+		"gender": "Comédia",
+		"rate": 95,
+		"img":
+			"https://images-na.ssl-images-amazon.com/images/M/MV5BYjFkMTlkYWUtZWFhNy00M2FmLThiOTYtYTRiYjVlZWYxNmJkXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+		"description":
+			"The Simpsons (Os Simpsons, no Brasil e Portugal) é uma série de animação adulta e sitcom norte-americana criada por Matt Groening para a Fox Broadcasting Company. A série é uma paródia satírica do estilo de vida da classe média dos Estados Unidos, simbolizada pela família protagonista, que consiste de Homer Jay Simpson, Marjorie (Marge) Bouvier Simpson, Bartholomew (Bart) Simpson, Elisabeth (Lisa) Marie Simpson e Margareth (Maggie) Simpson. A série se passa na fictícia cidade de Springfield e satiriza a cultura e a sociedade norte-americanas, a televisão e vários aspectos da condição humana."
+	},
+	{
+		"id": 6,
+		"title": "Vikings",
+		"gender": "Comédia",
+		"rate": 100,
+		"img":
+			"https://ia.media-imdb.com/images/M/MV5BOTEzNzI3MDc0N15BMl5BanBnXkFtZTgwMzk1MzA5NzE@._V1_.jpg",
+		"description":
+			"Vikings é inspirada nas sagas do Viking Ragnar Lothbrok, um dos mais conhecidos heróis nórdicos lendários e chamado de flagelo da Inglaterra e da França. A série retrata Ragnar como um fazendeiro que alcança a fama por seus ataques bem-sucedidos na Inglaterra e, mais tarde, se torna um Rei escandinavo, com o apoio de sua família e colegas guerreiros: seu irmão Rollo, seu filho Björn Flanco de Ferro e suas esposas—a escudeira Lagertha e a princesa Aslaug."
+	},
+	{
+		"id": 7,
+		"title": "The Walking Dead ",
+		"gender": "Drama",
+		"rate": 95,
+		"img":
+			"https://images-na.ssl-images-amazon.com/images/M/MV5BMzNkMWNmZGUtNWFlZi00MTYwLWIwMjQtOGViN2QzNmI2MWYwXkEyXkFqcGdeQXVyODA1MDc5NjM@._V1_.jpg",
+		"description":
+			"Sheriff Deputy Rick Grimes wakes up from a coma to learn the world is in ruins, and must lead a group of survivors to stay alive."
+	},
+	{
+		"id": 8,
+		"title": "Breaking Bad",
+		"gender": "Ação",
+		"rate": 97,
+		"img":
+			"https://ia.media-imdb.com/images/M/MV5BMTczMTY0MTMzOV5BMl5BanBnXkFtZTcwNDQxMTk4Nw@@._V1_SY1000_CR0,0,678,1000_AL_.jpg",
+		"description":
+			"Breaking Bad foi uma premiada série de televisão norte-americana neo-westerner criada e produzida por Vince Gilligan que retrata a vida do químico Walter White, um homem brilhante frustrado em dar aulas para adolescentes do ensino médio enquanto lida com um filho sofrendo de paralisia cerebral, uma esposa grávida e dívidas intermináveis. "
+	},
+	{
+		"id": 9,
+		"title": "The Fresh Prince",
+		"gender": "Comédia",
+		"rate": 97,
+		"img":
+			"https://images-na.ssl-images-amazon.com/images/M/MV5BMWViMmNmYzEtOTU4My00YjdiLWE5ZDUtOGE2NjMzYTE1MDg3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SY1000_CR0,0,702,1000_AL_.jpg",
+		"description":
+			"A streetwise, poor young man from Philadelphia is sent by his mother to live with his aunt, uncle and cousins in their Bel-Air mansion."
+	}
+]

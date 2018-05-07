@@ -26,13 +26,20 @@ const SerieCard = ({ serie }) => (
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
+		// Solução 2
+		// flex: .5,
+
+		// Solução 1
+		width: '50%',
 		padding: 10,
-		height: Dimensions.get('window').width / 2
+		height: Dimensions.get('window').width / 2,
 	},
 	card: {
 		flex: 1,
-		borderWidth: 1
+		borderWidth: 1,
+
+		// Solução 2
+		// margin: 10
 	},
 	cardTitleWrapper: {
 		backgroundColor: 'black',

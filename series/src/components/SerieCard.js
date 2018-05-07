@@ -7,8 +7,11 @@ import {
 	Image
 } from 'react-native';
 
-const SerieCard = ({ serie }) => (
-	<View style={styles.container}>
+const SerieCard = ({ serie, isFirstColumn }) => (
+	<View style={[
+		styles.container,
+		isFirstColumn ? styles.firstColumn : styles.lastColumn
+	]}>
 		<View style={styles.card}>
 			<Image
 				source={{
@@ -31,8 +34,11 @@ const styles = StyleSheet.create({
 
 		// Solução 1
 		width: '50%',
-		padding: 10,
+		padding: 5,
 		height: Dimensions.get('window').width / 2,
+
+		// borderWidth: 1,
+		// borderColor: 'blue',
 	},
 	card: {
 		flex: 1,
@@ -63,6 +69,12 @@ const styles = StyleSheet.create({
 		color: 'white',
 		fontSize: 15,
 		fontWeight: 'bold'
+	},
+	firstColumn: {
+		paddingLeft: 10
+	},
+	lastColumn: {
+		paddingRight: 10
 	}
 });
 

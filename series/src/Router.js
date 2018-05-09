@@ -2,6 +2,7 @@ import { StackNavigator } from 'react-navigation';
 
 import LoginPage from './pages/LoginPage';
 import SeriesPage from './pages/SeriesPage';
+import SerieDetailPage from './pages/SerieDetailPage';
 
 export default StackNavigator({
     'Main': {
@@ -13,6 +14,15 @@ export default StackNavigator({
             title: 'Bem vindo!',
         }
     },
+    'SerieDetail': {
+        screen: SerieDetailPage,
+        navigationOptions: ({ navigation }) => {
+            const { serie } = navigation.state.params;
+            return {
+                title: serie.title
+            }
+        }
+    }
 }, {
     navigationOptions: {
         title: "Series!",

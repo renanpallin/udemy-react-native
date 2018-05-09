@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, ScrollView, Text, Image } from 'react-native';
 
+import Line from '../components/Line';
 
 class SerieDetailPage extends React.Component {
 	render() {
@@ -17,14 +18,17 @@ class SerieDetailPage extends React.Component {
 		// this.props.navigation.state.params
 
 		return (
-			<View>
+			<ScrollView>
 				<Image
 					style={styles.image}
 					source={{
 						uri: serie.img
 					}} />
-				<Text>{serie.title}</Text>
-			</View>
+				<Line label="Título" content={serie.title} />
+				<Line label="Gênero" content={serie.gender} />
+				<Line label="Nota" content={serie.rate} />
+				<Line label="Descrição" content={serie.description} />
+			</ScrollView>
 		)
 	}
 }

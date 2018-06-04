@@ -3,7 +3,6 @@ import { StyleSheet, View, Text, FlatList } from 'react-native';
 import SerieCard from '../components/SerieCard';
 import AddSerieCard from '../components/AddSerieCard';
 
-
 import series from '../../series.json';
 
 const isEven = number => number % 2 === 0;

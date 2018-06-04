@@ -17,14 +17,10 @@ const AddSerieCard = ({ serie, isFirstColumn, onPress }) => (
 			isFirstColumn ? styles.firstColumn : styles.lastColumn
 		]}>
 		<View style={styles.card}>
-			{/*<Image
-				source={{
-					uri: serie.img
-				}}
-				aspectRatio={1}
-				resizeMode="cover"
-			/>*/}
-			<Text>Aqui vai nosso botãozinho</Text>
+			<Image
+				source={require('../../resources/add.png')}
+				style={styles.image}
+			/>
 		</View>
 	</TouchableOpacity>
 );
@@ -44,10 +40,10 @@ const styles = StyleSheet.create({
 	},
 	card: {
 		flex: 1,
-		borderWidth: 1,
-
-		// Solução 2
-		// margin: 10
+	},
+	image: {
+		width: '100%',
+		height: '100%',
 	},
 	firstColumn: {
 		paddingLeft: 10

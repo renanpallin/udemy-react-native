@@ -3,6 +3,7 @@ import { StackNavigator } from 'react-navigation';
 import LoginPage from './pages/LoginPage';
 import SeriesPage from './pages/SeriesPage';
 import SerieDetailPage from './pages/SerieDetailPage';
+import SerieFormPage from './pages/SerieFormPage';
 
 export default StackNavigator({
     'Main': {
@@ -15,6 +16,12 @@ export default StackNavigator({
             return {
                 title: serie.title
             }
+        }
+    },
+    'SerieForm': {
+        screen: SerieFormPage,
+        navigationOptions: {
+            title: 'Nova série',
         }
     },
     'Login': {

@@ -6,6 +6,12 @@ import SerieDetailPage from './pages/SerieDetailPage';
 import SerieFormPage from './pages/SerieFormPage';
 
 export default StackNavigator({
+    'SerieForm': {
+        screen: SerieFormPage,
+        navigationOptions: {
+            title: 'Nova série',
+        }
+    },
     'Main': {
         screen: SeriesPage
     },
@@ -16,12 +22,6 @@ export default StackNavigator({
             return {
                 title: serie.title
             }
-        }
-    },
-    'SerieForm': {
-        screen: SerieFormPage,
-        navigationOptions: {
-            title: 'Nova série',
         }
     },
     'Login': {

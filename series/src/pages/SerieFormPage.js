@@ -1,14 +1,44 @@
 import React from 'react';
-import { StyleSheet, View, Text, FlatList } from 'react-native';
+import {
+	StyleSheet,
+	View,
+	Text,
+	TextInput,
+} from 'react-native';
+import { connect } from 'react-redux';
 
-const SerieFormPage = props => (
+import FormRow from '../components/FormRow';
+import { setField } from '../actions';
+
+const SerieFormPage = ({ serieForm, setField }) => (
 	<View>
-		<Text>Aqui vai o form</Text>
+		<FormRow first>
+			<TextInput
+				style={styles.input}
+				placeholder="Título"
+				value={serieForm.title}
+				onChangeText={value => setField('title', value)}
+			 />
+		</FormRow>
 	</View>
 );
 
 const styles = StyleSheet.create({
-
+	input: {
+		paddingLeft: 5,
+		paddingRight: 5,
+		paddingBottom: 5,
+	}
 });
 
-export default SerieFormPage;
+function mapStateToProps(state) {
+	return {
+		serieForm: state.serieForm
+	}
+}
+
+const mapDispatchToProps = {
+	setField
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SerieFormPage);

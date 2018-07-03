@@ -1,3 +1,5 @@
+import firebase from 'firebase';
+
 export const SET_FIELD = 'SET_FIELD';
 export const setField = (field, value) => {
 	return {
@@ -8,5 +10,12 @@ export const setField = (field, value) => {
 }
 
 export const saveSerie = serie => {
-	console.log('aqui vamos salvar noss sŕeire', serie);
+	const { currentUser } = firebase.auth();
+	firebase
+		.database()
+		.ref(`/users/${currentUser.uid}/series`)
+		.push(serie)
+		.then(() => {
+			console.log('dá uma olhadinha lá no console do firebase =)')
+		})
 }

@@ -9,6 +9,11 @@ export const setField = (field, value) => {
 	}
 }
 
+export const SERIE_SAVED_SUCCESS = 'SERIE_SAVED_SUCCESS';
+const serieSavedSuccess = () => ({
+	type: SERIE_SAVED_SUCCESS
+});
+
 export const saveSerie = serie => {
 	const { currentUser } = firebase.auth();
 	return async dispatch => {
@@ -16,5 +21,6 @@ export const saveSerie = serie => {
 			.database()
 			.ref(`/users/${currentUser.uid}/series`)
 			.push(serie)
+			.then(() => dispatch(serieSavedSuccess()))
 	}
 }

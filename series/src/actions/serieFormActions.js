@@ -11,11 +11,10 @@ export const setField = (field, value) => {
 
 export const saveSerie = serie => {
 	const { currentUser } = firebase.auth();
-	firebase
-		.database()
-		.ref(`/users/${currentUser.uid}/series`)
-		.push(serie)
-		.then(() => {
-			console.log('dá uma olhadinha lá no console do firebase =)')
-		})
+	return async dispatch => {
+		return await firebase
+			.database()
+			.ref(`/users/${currentUser.uid}/series`)
+			.push(serie)
+	}
 }

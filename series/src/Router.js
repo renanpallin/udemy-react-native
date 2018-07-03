@@ -6,14 +6,20 @@ import SerieDetailPage from './pages/SerieDetailPage';
 import SerieFormPage from './pages/SerieFormPage';
 
 export default StackNavigator({
+    'Login': {
+        screen: LoginPage,
+        navigationOptions: {
+            title: 'Bem vindo!',
+        }
+    },
+    'Main': {
+        screen: SeriesPage
+    },
     'SerieForm': {
         screen: SerieFormPage,
         navigationOptions: {
             title: 'Nova série',
         }
-    },
-    'Main': {
-        screen: SeriesPage
     },
     'SerieDetail': {
         screen: SerieDetailPage,
@@ -24,13 +30,6 @@ export default StackNavigator({
             }
         }
     },
-    'Login': {
-        screen: LoginPage,
-        navigationOptions: {
-            title: 'Bem vindo!',
-        }
-    },
-
 }, {
     navigationOptions: {
         title: "Series!",

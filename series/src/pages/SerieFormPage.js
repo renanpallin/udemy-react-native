@@ -81,11 +81,9 @@ const SerieFormPage = ({
 
 			<Button
 				title="Salvar"
-				onPress={() => {
-					saveSerie(serieForm)
-						.then(() => {
-							navigation.goBack();
-						})
+				onPress={async () => {
+					await saveSerie(serieForm);
+					navigation.goBack();
 				}} />
 		</ScrollView>
 	</KeyboardAvoidingView>

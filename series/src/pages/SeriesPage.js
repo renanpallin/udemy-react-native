@@ -2,12 +2,11 @@ import React from 'react';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
 import SerieCard from '../components/SerieCard';
 import AddSerieCard from '../components/AddSerieCard';
-
-import series from '../../series.json';
+import { connect } from 'react-redux';
 
 const isEven = number => number % 2 === 0;
 
-const SeriesPage = props => (
+const SeriesPage = ({ series, navigation }) => (
 	<View>
 		<FlatList
 			data={[...series, { isLast: true }]}
@@ -15,11 +14,11 @@ const SeriesPage = props => (
 				item.isLast
 					? <AddSerieCard
 						isFirstColumn={isEven(index)}
-						onPress={() => props.navigation.navigate('SerieForm')} />
+						onPress={() => navigation.navigate('SerieForm')} />
 					: <SerieCard
 						serie={item}
 						isFirstColumn={isEven(index)}
-						onPress={() => props.navigation.navigate('SerieDetail', { serie: item })}
+						onPress={() => navigation.navigate('SerieDetail', { serie: item })}
 					/>
 			)}
 			keyExtractor={item => item.id}
@@ -39,4 +38,9 @@ const styles = StyleSheet.create({
 	}
 })
 
-export default SeriesPage;
+const mapStateToProps = state => {
+	const { series } = state;
+	return { series };
+}
+
+export default connect(mapStateToProps)(SeriesPage);

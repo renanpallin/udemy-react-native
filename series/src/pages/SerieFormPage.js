@@ -26,6 +26,28 @@ class SerieFormPage extends React.Component {
 		}
 	}
 
+	renderButton() {
+		if (this.state.isLoading) {
+			return <ActivityIndicator />;
+		}
+		return (
+			<Button
+				title="Salvar"
+				onPress={async () => {
+					this.setState({ isLoading: true });
+					try {
+						const { saveSerie, serieForm, navigation } = this.props;
+						await saveSerie(serieForm);
+						navigation.goBack();
+					} catch (error) {
+						Alert.alert('Erro!', error.message);
+					} finally {
+						this.setState({ isLoading: false });
+					}
+				}} />
+			);
+	}
+
 	render() {
 		const {
 			serieForm,
@@ -92,23 +114,7 @@ class SerieFormPage extends React.Component {
 							multiline={true}
 						 />
 					</FormRow>
-					{
-						this.state.isLoading
-							? <ActivityIndicator />
-							: <Button
-								title="Salvar"
-								onPress={async () => {
-									this.setState({ isLoading: true });
-									try {
-										await saveSerie(serieForm);
-										navigation.goBack();
-									} catch (error) {
-										Alert.alert('Erro!', error.message);
-									} finally {
-										this.setState({ isLoading: false });
-									}
-								}} />
-					}
+					{ this.renderButton() }
 				</ScrollView>
 			</KeyboardAvoidingView>
 		);

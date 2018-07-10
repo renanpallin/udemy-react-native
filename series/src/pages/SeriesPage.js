@@ -50,7 +50,11 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
 	const { series } = state;
-	return { series };
+	const keys = Object.keys(series);
+	const seriesWithKeys = keys.map(id => {
+		return { ...series[id], id }
+	});
+	return { series: seriesWithKeys };
 }
 
 export default connect(

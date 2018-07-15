@@ -2,6 +2,7 @@ import React from 'react';
 import {
 	StyleSheet,
 	ScrollView,
+	View,
 	Text,
 	Image,
 	Button,
@@ -31,11 +32,22 @@ class SerieDetailPage extends React.Component {
 				<Line label="Nota" content={serie.rate} />
 				<LongText label="Descrição" content={serie.description} />
 
-				<Button
-					title="Editar"
-					onPress={() => {
-						navigation.replace('SerieForm', { serieToEdit: serie })
-					}} />
+				<View style={styles.button}>
+					<Button
+						title="Editar"
+						onPress={() => {
+							navigation.replace('SerieForm', { serieToEdit: serie })
+						}} />
+				</View>
+
+				<View style={styles.button}>
+					<Button
+						title="Deletar"
+						color="#FF0004FF"
+						onPress={() => {
+							console.log('aqui vamos deletar a serie')
+						}} />
+				</View>
 			</ScrollView>
 		)
 	}
@@ -44,6 +56,9 @@ class SerieDetailPage extends React.Component {
 const styles = StyleSheet.create({
 	image: {
 		aspectRatio: 1
+	},
+	button: {
+		margin: 10
 	}
 });
 

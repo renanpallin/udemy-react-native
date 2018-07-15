@@ -8,6 +8,9 @@ import {
 	Button,
 } from 'react-native';
 
+import { connect } from 'react-redux';
+import { deleteSerie } from '../actions';
+
 import Line from '../components/Line';
 import LongText from '../components/LongText';
 
@@ -44,8 +47,11 @@ class SerieDetailPage extends React.Component {
 					<Button
 						title="Deletar"
 						color="#FF0004FF"
-						onPress={() => {
-							console.log('aqui vamos deletar a serie')
+						onPress={async () => {
+							const hasDeleted = await this.props.deleteSerie(serie);
+							if (hasDeleted) {
+								navigation.goBack();
+							}
 						}} />
 				</View>
 			</ScrollView>
@@ -62,4 +68,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default SerieDetailPage;
+export default connect(null, { deleteSerie })(SerieDetailPage);

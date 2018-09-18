@@ -15,6 +15,11 @@ export const watchSeries = () => {
 			.ref(`/users/${currentUser.uid}/series`)
 			.on('value', snapshot => {
 				const series = snapshot.val();
+
+				if (!series) {
+					return dispatch(setSeries({}))
+				}
+
 				const action = setSeries(series);
 				dispatch(action)
 			});

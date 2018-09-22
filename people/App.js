@@ -1,11 +1,11 @@
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 
 import PeoplePage from './src/pages/PeoplePage';
 import PeopleDetailPage from './src/pages/PeopleDetailPage';
 
 import { capitalizeFirstLetter } from './src/util';
 
-export default StackNavigator({
+export default createStackNavigator({
 	'Main': {
 		screen: PeoplePage
 	},

@@ -38,8 +38,11 @@ const AppNavigator = createStackNavigator({
 		headerTitleStyle: {
 			color: 'white',
 			fontSize: 30,
-			alignSelf: 'center',
-		}
+
+			// centralizar o header
+			flexGrow: 1,
+			textAlign: 'center'
+		},
 	}
 });
 

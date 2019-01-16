@@ -1,11 +1,12 @@
-import { createStackNavigator } from 'react-navigation';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 
 import PeoplePage from './src/pages/PeoplePage';
 import PeopleDetailPage from './src/pages/PeopleDetailPage';
 
 import { capitalizeFirstLetter } from './src/util';
 
-export default createStackNavigator({
+
+const AppNavigator = createStackNavigator({
 	'Main': {
 		screen: PeoplePage
 	},
@@ -26,7 +27,7 @@ export default createStackNavigator({
 		}
 	},
 }, {
-	navigationOptions: {
+	defaultNavigationOptions: {
 		title: 'Pessoas!',
 		headerTintColor: 'white',
 		headerStyle: {
@@ -37,7 +38,14 @@ export default createStackNavigator({
 		headerTitleStyle: {
 			color: 'white',
 			fontSize: 30,
-			alignSelf: 'center',
-		}
+
+			// centralizar o header
+			flexGrow: 1,
+			textAlign: 'center'
+		},
 	}
 });
+
+const AppContainer = createAppContainer(AppNavigator);
+
+export default AppContainer;

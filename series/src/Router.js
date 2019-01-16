@@ -1,11 +1,11 @@
-import { createStackNavigator } from 'react-navigation';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 
 import LoginPage from './pages/LoginPage';
 import SeriesPage from './pages/SeriesPage';
 import SerieDetailPage from './pages/SerieDetailPage';
 import SerieFormPage from './pages/SerieFormPage';
 
-export default createStackNavigator({
+const AppNavigator = createStackNavigator({
     'Login': {
         screen: LoginPage,
         navigationOptions: {
@@ -38,7 +38,7 @@ export default createStackNavigator({
         }
     },
 }, {
-    navigationOptions: {
+    defaultNavigationOptions: {
         title: "Series!",
         headerTintColor: 'white',
         headerStyle: {
@@ -52,3 +52,7 @@ export default createStackNavigator({
         }
     }
 });
+
+const AppContainer = createAppContainer(AppNavigator);
+
+export default AppContainer;

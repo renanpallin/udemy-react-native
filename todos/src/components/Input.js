@@ -5,7 +5,8 @@ const Input = ({ onChangeText, value }) => (
 	<TextInput
 		style={styles.input}
 		onChangeText={onChangeText}
-		value={value} />
+		value={value}
+		underlineColorAndroid="#000" />
 );
 
 const styles = StyleSheet.create({

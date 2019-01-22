@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "udemy-todos",
+    "name": "Udemy Todos",
     "slug": "udemy-todos",
     "privacy": "public",
     "sdkVersion": "32.0.0",
@@ -23,7 +23,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.renanpallin.udemytodo"
+    },
+    "android": {
+      "package": "com.renanpallin.udemytodo"
     }
   }
 }

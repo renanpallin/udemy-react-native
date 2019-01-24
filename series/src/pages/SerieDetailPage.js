@@ -19,6 +19,8 @@ class SerieDetailPage extends React.Component {
 		const { navigation } = this.props;
 		const { serie } = navigation.state.params;
 
+		console.log(serie.hasOwnProperty('img64'))
+
 		return (
 			<ScrollView>
 				{
@@ -26,7 +28,7 @@ class SerieDetailPage extends React.Component {
 						?  <Image
 							style={styles.image}
 							source={{
-								uri: serie.img
+								uri: `data:image/jpeg;base64,${serie.img64}` || serie.img
 							}} />
 						: null
 				}

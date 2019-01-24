@@ -4,6 +4,7 @@ import {
 	View,
 	Text,
 	TextInput,
+	Image,
 	Picker,
 	Slider,
 	Button,
@@ -21,6 +22,8 @@ import {
 	setWholeSerie,
 	resetForm,
 } from '../actions';
+
+import { ImagePicker } from 'expo';
 
 class SerieFormPage extends React.Component {
 	constructor(props) {
@@ -63,6 +66,23 @@ class SerieFormPage extends React.Component {
 			);
 	}
 
+	_pickImage = async () => {
+	    let result = await ImagePicker.launchImageLibraryAsync({
+	      allowsEditing: true,
+	       aspect: [1, 1],
+	      base64: true,
+	      quality: 0.2,
+	    });
+
+	    console.log(result);
+	    console.log(Object.keys(result));
+
+	    if (!result.cancelled) {
+			this.props.setField('img64', result.base64);
+	      this.setState({ image: result.uri });
+	    }
+	  };
+
 	render() {
 		const {
 			serieForm,
@@ -70,6 +90,8 @@ class SerieFormPage extends React.Component {
 			saveSerie,
 			navigation
 		} = this.props;
+
+		const { image } = this.state;
 
 		return (
 			<KeyboardAvoidingView
@@ -87,12 +109,12 @@ class SerieFormPage extends React.Component {
 					</FormRow>
 
 					<FormRow>
-						<TextInput
-							style={styles.input}
-							placeholder="URL da imagem"
-							value={serieForm.img}
-							onChangeText={value => setField('img', value)}
-						 />
+						<Button
+				          title="Pick an image from camera roll"
+				          onPress={this._pickImage}
+				        />
+				        {image &&
+				          <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
 					</FormRow>
 
 					<FormRow>

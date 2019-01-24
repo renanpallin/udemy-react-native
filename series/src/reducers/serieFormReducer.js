@@ -11,6 +11,7 @@ const INITIAL_STATE = {
 	gender: 'Policial',
 	rate: 0,
 	img: '',
+	img64: '',
 	description: ''
 }
 

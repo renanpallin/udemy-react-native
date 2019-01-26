@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 
 
-const SerieCard = ({ serie, isFirstColumn, onPress }) => (
+const SerieCard = ({ serie, isFirstColumn, onPress }) => {
+	return (
 	<TouchableOpacity
 		onPress={onPress}
 		style={[
@@ -18,11 +19,12 @@ const SerieCard = ({ serie, isFirstColumn, onPress }) => (
 		]}>
 		<View style={styles.card}>
 			{
-				serie.img
+				serie.img64
 					? <Image
 						source={{
-							uri: serie.img
+							uri: `data:image/jpeg;base64,${serie.img64}`
 						}}
+						style={styles.img}
 						aspectRatio={1}
 						resizeMode="cover"
 					/>
@@ -33,7 +35,7 @@ const SerieCard = ({ serie, isFirstColumn, onPress }) => (
 			</View>
 		</View>
 	</TouchableOpacity>
-);
+)};
 
 const styles = StyleSheet.create({
 	container: {
@@ -83,6 +85,9 @@ const styles = StyleSheet.create({
 	},
 	lastColumn: {
 		paddingRight: 10
+	},
+	img: {
+		width: '100%'
 	}
 });
 

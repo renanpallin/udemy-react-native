@@ -24,7 +24,7 @@ class SerieDetailPage extends React.Component {
 		return (
 			<ScrollView>
 				{
-					serie.img
+					serie.img64
 						?  <Image
 							style={styles.image}
 							source={{
@@ -63,7 +63,8 @@ class SerieDetailPage extends React.Component {
 
 const styles = StyleSheet.create({
 	image: {
-		aspectRatio: 1
+		aspectRatio: 1,
+		width: '100%'
 	},
 	button: {
 		margin: 10

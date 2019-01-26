@@ -70,6 +70,10 @@ class SerieFormPage extends React.Component {
 	    let result = await ImagePicker.launchImageLibraryAsync({
 	      allowsEditing: true,
 	       aspect: [1, 1],
+	       /*
+	       aspect (array) -- An array with two entries [x, y] specifying the aspect ratio to maintain if the user is allowed to edit the image (by passing allowsEditing: true). This is only applicable on Android, since on iOS the crop rectangle is always a square.
+
+	        */
 	      base64: true,
 	      quality: 0.2,
 	    });
@@ -79,7 +83,7 @@ class SerieFormPage extends React.Component {
 
 	    if (!result.cancelled) {
 			this.props.setField('img64', result.base64);
-	      this.setState({ image: result.uri });
+	      // this.setState({ image: result.uri });
 	    }
 	  };
 
@@ -91,7 +95,7 @@ class SerieFormPage extends React.Component {
 			navigation
 		} = this.props;
 
-		const { image } = this.state;
+		// const { image } = this.state;
 
 		return (
 			<KeyboardAvoidingView
@@ -109,12 +113,13 @@ class SerieFormPage extends React.Component {
 					</FormRow>
 
 					<FormRow>
+				        {serieForm.img64 ?
+				          <Image source={{ uri: `data:image/jpeg;base64,${serieForm.img64}` }}
+				          	style={{ width: '100%', aspectRatio: 1 }} />: null}
 						<Button
-				          title="Pick an image from camera roll"
+				          title="Selecione uma imagem"
 				          onPress={this._pickImage}
 				        />
-				        {image &&
-				          <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
 					</FormRow>
 
 					<FormRow>

@@ -16,14 +16,9 @@ import {
 import { connect } from 'react-redux';
 
 import FormRow from '../components/FormRow';
-import {
-	setField,
-	saveSerie,
-	setWholeSerie,
-	resetForm,
-} from '../actions';
+import { setField, saveSerie, setWholeSerie, resetForm } from '../actions';
 
-import { ImagePicker } from 'expo';
+import { ImagePicker, Permissions } from 'expo';
 
 class SerieFormPage extends React.Component {
 	constructor(props) {
@@ -31,7 +26,7 @@ class SerieFormPage extends React.Component {
 
 		this.state = {
 			isLoading: false,
-		}
+		};
 	}
 
 	componentDidMount() {
@@ -62,38 +57,55 @@ class SerieFormPage extends React.Component {
 					} finally {
 						this.setState({ isLoading: false });
 					}
-				}} />
-			);
+				}}
+			/>
+		);
 	}
 
+	checkOrAskPermissions = async () => {
+		const currentStatus = await Permissions.getAsync(
+			Permissions.CAMERA_ROLL
+		).status;
+
+		if (currentStatus == 'granted') {
+			return true;
+		}
+
+		const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+
+		if (status == 'granted') {
+			return true;
+		}
+
+		return false;
+	};
+
 	_pickImage = async () => {
-	    let result = await ImagePicker.launchImageLibraryAsync({
-	      allowsEditing: true,
-	       aspect: [1, 1],
-	       /*
-	       aspect (array) -- An array with two entries [x, y] specifying the aspect ratio to maintain if the user is allowed to edit the image (by passing allowsEditing: true). This is only applicable on Android, since on iOS the crop rectangle is always a square.
+		const hasPermission = this.checkOrAskPermissions();
+		if (!hasPermission) {
+			Alert.alert('Você precisa permitir o acesso às imagens');
+			return;
+		}
 
-	        */
-	      base64: true,
-	      quality: 0.2,
-	    });
+		let result = await ImagePicker.launchImageLibraryAsync({
+			allowsEditing: true,
+			aspect: [1, 1],
+			/*
+		 	       aspect (array) -- An array with two entries [x, y] specifying the aspect ratio to maintain if the user is allowed to edit the image (by passing allowsEditing: true). This is only applicable on Android, since on iOS the crop rectangle is always a square.
 
-	    console.log(result);
-	    console.log(Object.keys(result));
+		 	        */
+			base64: true,
+			quality: 0.2,
+		});
 
-	    if (!result.cancelled) {
+		if (!result.cancelled) {
 			this.props.setField('img64', result.base64);
-	      // this.setState({ image: result.uri });
-	    }
-	  };
+			// this.setState({ image: result.uri });
+		}
+	};
 
 	render() {
-		const {
-			serieForm,
-			setField,
-			saveSerie,
-			navigation
-		} = this.props;
+		const { serieForm, setField, saveSerie, navigation } = this.props;
 
 		// const { image } = this.state;
 
@@ -109,24 +121,32 @@ class SerieFormPage extends React.Component {
 							placeholder="Título"
 							value={serieForm.title}
 							onChangeText={value => setField('title', value)}
-						 />
+						/>
 					</FormRow>
 
 					<FormRow>
-				        {serieForm.img64 ?
-				          <Image source={{ uri: `data:image/jpeg;base64,${serieForm.img64}` }}
-				          	style={{ width: '100%', aspectRatio: 1 }} />: null}
+						{serieForm.img64 ? (
+							<Image
+								source={{
+									uri: `data:image/jpeg;base64,${
+										serieForm.img64
+									}`,
+								}}
+								style={{ width: '100%', aspectRatio: 1 }}
+							/>
+						) : null}
 						<Button
-				          title="Selecione uma imagem"
-				          onPress={this._pickImage}
-				        />
+							title="Selecione uma imagem"
+							onPress={this._pickImage}
+						/>
 					</FormRow>
 
 					<FormRow>
 						<Picker
 							selectedValue={serieForm.gender}
-							onValueChange={itemValue => setField('gender', itemValue)}>
-
+							onValueChange={itemValue =>
+								setField('gender', itemValue)
+							}>
 							<Picker.Item label="Policial" value="Policial" />
 							<Picker.Item label="Comédia" value="Comédia" />
 							<Picker.Item label="Terror" value="Terror" />
@@ -143,7 +163,8 @@ class SerieFormPage extends React.Component {
 							value={serieForm.rate}
 							minimumValue={0}
 							maximumValue={100}
-							step={5} />
+							step={5}
+						/>
 					</FormRow>
 
 					<FormRow>
@@ -151,18 +172,19 @@ class SerieFormPage extends React.Component {
 							style={styles.input}
 							placeholder="Descrição"
 							value={serieForm.description}
-							onChangeText={value => setField('description', value)}
+							onChangeText={value =>
+								setField('description', value)
+							}
 							numberOfLines={4}
 							multiline={true}
-						 />
+						/>
 					</FormRow>
-					{ this.renderButton() }
+					{this.renderButton()}
 				</ScrollView>
 			</KeyboardAvoidingView>
 		);
 	}
 }
-
 
 const styles = StyleSheet.create({
 	input: {
@@ -176,13 +198,13 @@ const styles = StyleSheet.create({
 		paddingLeft: 10,
 		paddingRight: 10,
 		paddingBottom: 10,
-	}
+	},
 });
 
 function mapStateToProps(state) {
 	return {
-		serieForm: state.serieForm
-	}
+		serieForm: state.serieForm,
+	};
 }
 
 const mapDispatchToProps = {
@@ -190,6 +212,9 @@ const mapDispatchToProps = {
 	saveSerie,
 	setWholeSerie,
 	resetForm,
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SerieFormPage);
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(SerieFormPage);

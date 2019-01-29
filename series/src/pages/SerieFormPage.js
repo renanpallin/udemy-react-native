@@ -11,6 +11,7 @@ import {
 	KeyboardAvoidingView,
 	ActivityIndicator,
 	Alert,
+	Image,
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -78,7 +79,7 @@ class SerieFormPage extends React.Component {
 		});
 
 		if (!result.cancelled) {
-			console.log('aqui temos uma imagem!', result.base64);
+			this.props.setField('img64', result.base64);
 		}
 	}
 
@@ -106,6 +107,14 @@ class SerieFormPage extends React.Component {
 					</FormRow>
 
 					<FormRow>
+						{ serieForm.img64
+							? <Image
+								source={{
+									uri: `data:image/jpeg;base64,${serieForm.img64}`
+								}}
+								style={styles.img} />
+							: null }
+
 						<Button
 							title="Selecione uma imagem"
 							onPress={() => this.pickImage()} />
@@ -165,6 +174,10 @@ const styles = StyleSheet.create({
 		paddingLeft: 10,
 		paddingRight: 10,
 		paddingBottom: 10,
+	},
+	img: {
+		aspectRatio: 1,
+		width: '100%',
 	}
 });
 

@@ -22,6 +22,8 @@ import {
 	resetForm,
 } from '../actions';
 
+import { Permissions } from 'expo';
+
 class SerieFormPage extends React.Component {
 	constructor(props) {
 		super(props);
@@ -63,6 +65,19 @@ class SerieFormPage extends React.Component {
 			);
 	}
 
+	async pickImage() {
+		console.log('usuário deseja selecionar uma imagem');
+
+		const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+		if (status !== 'granted') {
+			console.log('usuário NÃO permitiu');
+			Alert.alert('Você precisa permitir o acesso!');
+			return;
+		}
+
+		console.log('usuário permitiu!!! Podemos continuar');
+	}
+
 	render() {
 		const {
 			serieForm,
@@ -87,12 +102,9 @@ class SerieFormPage extends React.Component {
 					</FormRow>
 
 					<FormRow>
-						<TextInput
-							style={styles.input}
-							placeholder="URL da imagem"
-							value={serieForm.img}
-							onChangeText={value => setField('img', value)}
-						 />
+						<Button
+							title="Selecione uma imagem"
+							onPress={() => this.pickImage()} />
 					</FormRow>
 
 					<FormRow>

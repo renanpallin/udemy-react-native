@@ -22,7 +22,7 @@ import {
 	resetForm,
 } from '../actions';
 
-import { Permissions } from 'expo';
+import { Permissions, ImagePicker } from 'expo';
 
 class SerieFormPage extends React.Component {
 	constructor(props) {
@@ -66,16 +66,20 @@ class SerieFormPage extends React.Component {
 	}
 
 	async pickImage() {
-		console.log('usuário deseja selecionar uma imagem');
-
 		const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
 		if (status !== 'granted') {
-			console.log('usuário NÃO permitiu');
 			Alert.alert('Você precisa permitir o acesso!');
 			return;
 		}
 
-		console.log('usuário permitiu!!! Podemos continuar');
+		const result = await ImagePicker.launchImageLibraryAsync({
+			quality: 0.2,
+			base64: true,
+		});
+
+		if (!result.cancelled) {
+			console.log('aqui temos uma imagem!', result.base64);
+		}
 	}
 
 	render() {

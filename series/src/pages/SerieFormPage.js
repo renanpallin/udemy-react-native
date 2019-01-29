@@ -76,6 +76,8 @@ class SerieFormPage extends React.Component {
 		const result = await ImagePicker.launchImageLibraryAsync({
 			quality: 0.2,
 			base64: true,
+			allowsEditing: true,
+			aspect: [1, 1], // Android only
 		});
 
 		if (!result.cancelled) {

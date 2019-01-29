@@ -18,10 +18,10 @@ const SerieCard = ({ serie, isFirstColumn, onPress }) => (
 		]}>
 		<View style={styles.card}>
 			{
-				serie.img
+				serie.img64
 					? <Image
 						source={{
-							uri: serie.img
+							uri: `data:image/jpeg;base64,${serie.img64}`
 						}}
 						aspectRatio={1}
 						resizeMode="cover"

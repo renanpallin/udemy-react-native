@@ -3,10 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0",
-    "jest-expo": "25.0.0",
-    "react-native-scripts": "1.11.1",
-    "react-test-renderer": "16.2.0"
+    "babel-preset-expo": "^5.0.0"
   },
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -14,9 +11,6 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject"
-  },
-  "jest": {
-    "preset": "jest-expo"
   },
   "dependencies": {
     "axios": "^0.18.0",

@@ -4,9 +4,6 @@
   "private": true,
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
-    "jest-expo": "25.0.0",
-    "react-native-scripts": "1.11.1",
-    "react-test-renderer": "16.2.0",
     "remote-redux-devtools": "^0.5.16"
   },
   "main": "node_modules/expo/AppEntry.js",
@@ -15,9 +12,6 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject"
-  },
-  "jest": {
-    "preset": "jest-expo"
   },
   "dependencies": {
     "expo": "^32.0.0",
